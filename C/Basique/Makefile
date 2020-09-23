@@ -16,6 +16,9 @@ all: $(EXEC)
 main: main.c
 	$(CC) -o $@ $^ $(LDFLAGS)
 
+dynam : allocation_dynamique.c
+	$(CC) -o $@ $^ $(LDFLAGS)
+	
 clean:
 	rm -rf *.o
 

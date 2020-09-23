@@ -1,4 +1,5 @@
 #include <stdio.h> //Directive de préprocesseur
+#include <string.h>
 
 /*
 	Déclaration d'une variable utilisateur (variable globale)
@@ -69,9 +70,9 @@ void variable(void)
 }
 
 /*
-	Cette fonction permet de vérifier si une personne est majeure ou mineurs
+	Cette fonction permet de vérifier si une personne est majeure ou mineure
 */
-int estMajeur(int majeur)
+Bool estMajeur(int majeur)
 {
 	Bool estMajeur;
 	if (majeur <18)
@@ -89,10 +90,10 @@ int estMajeur(int majeur)
 }
 /* Cette fonction permet de connaitre le sexe de la personne */
 
-error_t AfficherGenre(Personne p)
+error_t AfficherGenre(Personne *p)
 {
 	error_t u32_cr = PROJET_CR_OK;
-	switch (p.Genre)
+	switch (p->Genre)
 	{
 		case HOMME:
 			printf("C'est un homme !\r\n");
@@ -109,12 +110,12 @@ error_t AfficherGenre(Personne p)
 }
 
 /* Cette fonction permet d'avoir des informations sur la personne */
-error_t Informations(Personne p)
+error_t Informations(Personne *p)
 {
 
 	error_t u32_cr = PROJET_CR_OK;
 
-	u32_cr = estMajeur(p.age);
+	u32_cr = estMajeur(p->age);
 	u32_cr = AfficherGenre(p);
 
 
@@ -143,12 +144,13 @@ int main(int argc, char **argv)
 
 	//Information à propos de cette personne.
 	P1.age = 15;
-	P1.Genre = 'P';
+	P1.Genre = 'A';
+	strcpy(P1.Prenom,"Coucou");
 
 	printf("La personne se nomme : %s\r\n",P1.Prenom);
 	printf("La personne a %d ans.\r\n",P1.age);
 
-	Informations(P1);
+	Informations(&P1);
 
 	return 0; //Retour de la fonction
 }
