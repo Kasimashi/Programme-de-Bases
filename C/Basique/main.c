@@ -4,6 +4,8 @@
 	Déclaration d'une variable utilisateur (variable globale)
 */
 #define MAVARIABLE 0 
+#define HOMME 'M'
+#define FEMME 'F'
 
 /* 
 	Définition des codes d'erreurs de retour
@@ -39,7 +41,7 @@ typedef struct
 {
 	uint8 age;
 	char Prenom[20];
-	uint8 Sexe;
+	uint8 Genre;
 }Personne;
 
 
@@ -80,20 +82,43 @@ int estMajeur(int majeur)
 	else
 	{
 		printf("L'individu est majeur !\r\n");
+		printf("Give him a bottle of rum!\n");
 		estMajeur = TRUE;
 	}
 	return estMajeur;
 }
+/* Cette fonction permet de connaitre le sexe de la personne */
 
-error_t maFonction(int majeur)
+error_t AfficherGenre(Personne p)
+{
+	error_t u32_cr = PROJET_CR_OK;
+	switch (p.Genre)
+	{
+		case HOMME:
+			printf("C'est un homme !\r\n");
+			break;
+		case FEMME:
+			printf("C'est une femme !\r\n");
+			break;
+		default:
+			printf("C'est un OVNI ... le genre donnée est incorrect\r\n");
+			u32_cr = PROJET_CR_ERREUR_PARAMETRE;
+			break;
+	}
+	return u32_cr;
+}
+
+/* Cette fonction permet d'avoir des informations sur la personne */
+error_t Informations(Personne p)
 {
 
 	error_t u32_cr = PROJET_CR_OK;
 
-	if (estMajeur(majeur))
-	{
-		u32_cr = PROJET_CR_ERREUR_PARAMETRE;
-	}
+	u32_cr = estMajeur(p.age);
+	u32_cr = AfficherGenre(p);
+
+
+	/* Vérification des erreurs */
 
 	if (u32_cr != PROJET_CR_OK)
 	{
@@ -110,19 +135,20 @@ error_t maFonction(int majeur)
 
 }
 
+/* Fonction principale du programme ... */
+
 int main(int argc, char **argv)
 {
-	Personne P1;
+	Personne P1; //Déclaration de la structure Personne 1
 
-	P1.age = 18;
-	P1.Sexe = 'M';
+	//Information à propos de cette personne.
+	P1.age = 15;
+	P1.Genre = 'P';
 
 	printf("La personne se nomme : %s\r\n",P1.Prenom);
 	printf("La personne a %d ans.\r\n",P1.age);
 
-	printf("Give him a bottle of rum!\n");
-
-	maFonction(19);
+	Informations(P1);
 
 	return 0; //Retour de la fonction
 }
