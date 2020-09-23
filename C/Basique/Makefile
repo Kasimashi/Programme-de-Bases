@@ -18,7 +18,10 @@ main: main.c
 
 dynam : allocation_dynamique.c
 	$(CC) -o $@ $^ $(LDFLAGS)
-	
+
+fichier : fichiers.c
+	$(CC) -o $@ $^ $(LDFLAGS)
+
 clean:
 	rm -rf *.o
 
