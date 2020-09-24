@@ -8,7 +8,7 @@
 CC=gcc
 CFLAGS=-W -Wall -ansi -pedantic
 # Wall enables all compiler's warning messages
-LDFLAGS=
+LDFLAGS= -lpthread
 EXEC=main
 
 all: $(EXEC)
@@ -20,6 +20,9 @@ dynam : allocation_dynamique.c
 	$(CC) -o $@ $^ $(LDFLAGS)
 
 fichier : fichiers.c
+	$(CC) -o $@ $^ $(LDFLAGS)
+
+semaphore : semaphore.c
 	$(CC) -o $@ $^ $(LDFLAGS)
 
 clean:
