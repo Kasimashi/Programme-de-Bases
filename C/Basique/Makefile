@@ -25,6 +25,9 @@ fichier : fichiers.c
 semaphore : semaphore.c
 	$(CC) -o $@ $^ $(LDFLAGS)
 
+tableaux: tableaux.c
+	$(CC) -o $@ $^ $(LDFLAGS)
+
 clean:
 	rm -rf *.o
 
