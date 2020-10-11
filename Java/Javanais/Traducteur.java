@@ -64,9 +64,6 @@ public class Traducteur extends JFrame implements ActionListener{
 	   String texte_traduit;
 	   StringBuilder temp = new StringBuilder();
 	   
-	   System.out.println(Lettre.MatchRegex());
-	   
-	  
 	  for (int i=0; i< texte.length(); i++){
 	  
 	      char lettre_buffer = texte.charAt(i);
@@ -77,11 +74,19 @@ public class Traducteur extends JFrame implements ActionListener{
 	    	  if (Lettre.estVoyelle(lettre_buffer)) { 
 					System.out.println("voyelle");  
 					if (Lettre.estY(lettre_buffer) && Lettre.estVoyelle(texte.charAt(i+1)))   {
+						System.out.println("Y : Suivi d'une voyelle ?"); 
 						//Doing Nothing 
 					}
 					else {
-						temp.append('a');
-						temp.append('v');
+						if((lettre_buffer >= 'A' && lettre_buffer <= 'Z'))
+						{
+							temp.append('A');
+							temp.append('V');
+						}
+						else {
+							temp.append('a');
+							temp.append('v');
+						}
 					}
 			  }else{
 				  System.out.println("consomne");  
