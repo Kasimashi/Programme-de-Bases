@@ -1,12 +1,13 @@
 import java.awt.*; 
 import javax.swing.*;
 import java.awt.event.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Arrays;
  
 public class Traducteur extends JFrame implements ActionListener{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	JButton bouton,effacer,quitter;
 	//Traduction traduction;
 	JTextField text,traduction_text;
@@ -49,6 +50,7 @@ public class Traducteur extends JFrame implements ActionListener{
       }
 	  if (e.getSource() == effacer) {
          System.out.println("Effacer");
+         text.setText("");
 		 traduction_text.setText("");
       }
 	  if (e.getSource() == quitter) {
@@ -59,34 +61,47 @@ public class Traducteur extends JFrame implements ActionListener{
    }
    
    public void Traduire(String texte){
-	   System.out.println(texte);
+	   String texte_traduit;
+	   StringBuilder temp = new StringBuilder();
+	   
+	   System.out.println(Lettre.MatchRegex());
+	   
 	  
 	  for (int i=0; i< texte.length(); i++){
 	  
 	      char lettre_buffer = texte.charAt(i);
 	      
-		  if (Lettre.estVoyelle(lettre_buffer)) { 
-				System.out.println(lettre_buffer + " est une voyelle");  
-		  }else{
-			  System.out.println(lettre_buffer + " est une consomne");  
-		  }
-		  /*
-		  if(lettre_buffer.estY()){
+	      if((lettre_buffer >= 'A' && lettre_buffer <= 'Z') || (lettre_buffer >= 'a' && lettre_buffer <= 'z')){
+	    	  System.out.print(lettre_buffer + " est une lettre et c'est une ");
+	    	  
+	    	  if (Lettre.estVoyelle(lettre_buffer)) { 
+					System.out.println("voyelle");  
+					if (Lettre.estY(lettre_buffer) && Lettre.estVoyelle(texte.charAt(i+1)))   {
+						//Doing Nothing 
+					}
+					else {
+						temp.append('a');
+						temp.append('v');
+					}
+			  }else{
+				  System.out.println("consomne");  
+			  }
+	    	  
+	      }
+	      else{
+	    	  System.out.println(lettre_buffer + " n'est pas une lettre.");
+	      }
+	      
+		  temp.append(lettre_buffer);
 		  
-		    System.out.println("ALEEEEEEEEEEEERTE !"); 
-		  }
-		  */
-		  
-		//buffer.setCharAt(2,'4');
-		//System.out.println(maChaine.charAt(i));
 	  }
-	  /*
-	  maChaine = buffer.toString();
-	  System.out.println(maChaine);
-	  */
-	   traduction_text.setText(texte + " : TRADUIIT !!");
+	  texte_traduit = temp.toString();
+	  System.out.println(texte_traduit);
+
+	  traduction_text.setText(texte_traduit);
    }
    public static void main(String args[]) {
-      Traducteur fenetre = new Traducteur(); 
+      @SuppressWarnings("unused")
+	Traducteur fenetre = new Traducteur(); 
    }
 }
