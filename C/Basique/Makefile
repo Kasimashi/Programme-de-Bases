@@ -16,18 +16,6 @@ all: $(EXEC)
 main: main.c
 	$(CC) -o $@ $^ $(LDFLAGS)
 
-dynam : allocation_dynamique.c
-	$(CC) -o $@ $^ $(LDFLAGS)
-
-fichier : fichiers.c
-	$(CC) -o $@ $^ $(LDFLAGS)
-
-semaphore : semaphore.c
-	$(CC) -o $@ $^ $(LDFLAGS)
-
-tableaux: tableaux.c
-	$(CC) -o $@ $^ $(LDFLAGS)
-
 clean:
 	rm -rf *.o
 
