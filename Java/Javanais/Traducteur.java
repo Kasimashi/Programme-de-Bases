@@ -66,22 +66,23 @@ public class Traducteur extends JFrame implements ActionListener{
 
 	  for (int i=0; i< texte.length(); i++){
 
-	      Lettre lettre_buffer = new Lettre(texte.charAt(i));
-        Lettre next_letter = new Lettre(' ');
-        try {
+		  Lettre lettre_buffer = new Lettre(texte.charAt(i));
+		  Lettre next_letter = new Lettre(' ');
+		  
+		try {
           next_letter.setLettre(texte.charAt(i+1));
         }
         catch(Exception e) {
 
         }
 
-	      if((lettre_buffer.getLettre() >= 'A' && lettre_buffer.getLettre() <= 'Z') || (lettre_buffer.getLettre() >= 'a' && lettre_buffer.getLettre() <= 'z')){
+	      if(lettre_buffer.estUneLettre()){
 	    	  System.out.print(lettre_buffer.getLettre() + " est une lettre et c'est une ");
 
 	    	  if (lettre_buffer.estVoyelle()) {
   					System.out.println("voyelle");
   					if (!(lettre_buffer.estY() && i!=texte.length() && next_letter.estVoyelle()))   {
-              if((lettre_buffer.getLettre() >= 'A' && lettre_buffer.getLettre() <= 'Z'))
+  						if(lettre_buffer.estMajuscule())
   						{
   							temp.append('A');
   							temp.append('V');

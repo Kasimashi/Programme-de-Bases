@@ -15,7 +15,7 @@ public class Lettre {
 		 lettre=' ';
 	 }
 
-	 public Lettre(char lettre) {a
+	 public Lettre(char lettre) {
 		 this.lettre = lettre;
 	 }
 
@@ -37,6 +37,18 @@ public class Lettre {
 	*/
 	 public boolean estY() {
 		 return (this.lettre=='y' || this.lettre=='Y');
+	 }
+	 
+	 public boolean estUneLettre() {
+		 return (( this.lettre >= 'A' && this.lettre <= 'Z') || (this.lettre >= 'a' && this.lettre <= 'z'));
+	 }
+	 
+	 public boolean estMajuscule() {
+		 return ((this.lettre >= 'A' && this.lettre <= 'Z'));
+	 }
+	 
+	 public boolean estMinuscule() {
+		 return ((this.lettre >= 'a' && this.lettre <= 'z'));
 	 }
 
 	 public char getLettre() {
