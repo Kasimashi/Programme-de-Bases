@@ -2,8 +2,8 @@ import java.util.*;
 
 public class Lettre {
 
-	private static Character[] voyelles = {'a', 'e', 'i','o','u','y','A','E','I','O','U','Y'};
-	private char lettre;
+	private static Character[] voyelles = {'a', 'e', 'i','o','u','y'};
+	private Character lettre;
 
 	/**
 	* Le constructeur de la classe Lettre.
@@ -26,8 +26,8 @@ public class Lettre {
 	*/
 
 	 public boolean estVoyelle() {
-	 	List<Character> list = Arrays.asList(this.voyelles);
-		return(list.contains(this.lettre));
+	 	List<Character> list = Arrays.asList(Lettre.voyelles);
+		return(list.contains(Character.toLowerCase(this.lettre)));
 	 }
 
 	/**
