@@ -13,7 +13,10 @@ EXEC=main
 
 all: $(EXEC)
 
-main: main.c
+base1: base1.c
+	$(CC) -o $@ $^ $(LDFLAGS)
+	
+base2: base2.c
 	$(CC) -o $@ $^ $(LDFLAGS)
 
 clean:
