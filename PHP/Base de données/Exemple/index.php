@@ -1,4 +1,5 @@
 <?php
+/*
 
 require "Personnage.php"
 
@@ -13,5 +14,26 @@ while ($donnees = $request->fetch(PDO::FETCH_ASSOC)) // Chaque entrée sera réc
         
   echo $perso->nom(), ' a ', $perso->forcePerso(), ' de force, ', $perso->degats(), ' de dégâts, ', $perso->experience(), ' d\'expérience et est au niveau ', $perso->niveau();
 }
+
+
+?>
+*/
+require "Personnage.php";
+require "PersonnagesManager.php";
+
+$perso = new Personnage([
+  'nom' => 'Victor',
+  'forcePerso' => 5,
+  'degats' => 0,
+  'niveau' => 1,
+  'experience' => 0
+]);
+
+echo 'Le personnage crée a le nom de ', $perso->nom(), ' il possède une force de ', $perso->forcePerso(), ' fait ', $perso->degats() , 'de dégats et de niveau : ',$perso->niveau(),' de plus il a une expérience de ',$perso->experience();
+
+$db = new PDO('mysql:host=127.0.0.1;dbname=test1', 'root', 'mdp');
+$manager = new PersonnagesManager($db);
+    
+$manager->add($perso);
 
 ?>

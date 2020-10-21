@@ -7,6 +7,27 @@ CREATE DATABASE 'yourDB';
 Lister les bases de données :
 SHOW DATABASES;
 
+Utiliser une base de donnée:
+use <databasename>
+
+AFFICHER LES TABLES d'une base:
+SHOW TABLES;
+
+CREER UNE TABLE :
+CREATE TABLE personnages (
+id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+nom VARCHAR(255),
+forcePerso INT,
+degats INT,
+niveau INT,
+experience INT,
+reg_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+)
+
+SUPPRIMER TOUTES LES LIGNES D'UNE TABLE :
+
+TRUNCATE TABLE <databasename>;
+
 Lister les utilisateurs de la base de données :
 SELECT User FROM mysql.user;
 
