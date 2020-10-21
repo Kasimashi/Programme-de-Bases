@@ -1,0 +1,1 @@
+# Le design pattern : Singleton
