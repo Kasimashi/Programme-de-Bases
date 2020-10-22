@@ -31,7 +31,7 @@ $perso = new Personnage([
 
 echo 'Le personnage crée a le nom de ', $perso->nom(), ' il possède une force de ', $perso->forcePerso(), ' fait ', $perso->degats() , 'de dégats et de niveau : ',$perso->niveau(),' de plus il a une expérience de ',$perso->experience();
 
-$db = new PDO('mysql:host=127.0.0.1;dbname=test1', 'root', 'mdp');
+$db = new PDO('mysql:host=127.0.0.1;dbname=test1', 'user', 'user');
 $manager = new PersonnagesManager($db);
     
 $manager->add($perso);
