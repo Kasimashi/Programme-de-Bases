@@ -13,7 +13,7 @@ NB_CASE = 8
 def saisie():
     CORRECT = False
     while not(CORRECT): #Tant que c'est pas une lettre:
-        letter = str(input("Rentrer une lettre : "))
+        letter = str(input("Proposer une lettre : "))
         CORRECT = letter.isalpha() & len(letter) == 1
         if not(CORRECT):
             print("Doit être une lettre unique.")
@@ -89,19 +89,34 @@ def traitPendu(etape):
         pendu.penup()
     pendu.pensize() ##Reset pensize
 
-
-## Dessin de la grille
-for i in range(NB_CASE+1):
-    pendu.penup()
-    pendu.setpos(-(NB_CASE*STEP/2), ((NB_CASE*STEP/2) - (STEP) * i)) # Start horizontal line
-    pendu.pendown()
-    pendu.setpos((NB_CASE*STEP/2), ((NB_CASE*STEP/2) - (STEP) * i)) # End horizontal line
-
-    pendu.penup()
-    pendu.setpos((-(NB_CASE*STEP/2) + (STEP) * i), (NB_CASE*STEP/2)) # Start vertical line
-    pendu.pendown()
-    pendu.setpos((-(NB_CASE*STEP/2) + (STEP) * i), -(NB_CASE*STEP/2)) # End vertical line
-
+### Cette fonction demande au joueur s'il veut recommecer
+def recommencer():
+    print("Voulez vous recommencer une partie ?! (O/N)")
+    CORRECT = False
+    while not(CORRECT): #Tant que la réponse n'est pas bonne:
+        letter = str(input("Faites votre choix : "))
+        letter = letter.upper() ## Mise en majuscule de la lettre
+        CORRECT = (letter == 'O') | (letter == 'N')
+        if not(CORRECT):
+            print("La réponse doit être O ou N")
+    if (letter == 'O') :
+        return True
+    elif (letter == 'N'):
+        return False
+    else:
+        return False
+    
+### Cette fonction test si la partie est terminé gagné ou non
+def testFin(etape,motMystere,temp):
+    if (etape==12):
+        print("Vous avez perdu ... la bonne réponse était {}".format(motMystere))
+        return True
+    elif ("_" not in temp):
+        print("Vous avez gagné le mot mystère était {}!".format(temp))
+        return True
+    else:
+        return False
+        
 ### Cette fonction renvoi un texte "_" en fonction de la longueur du mot mystère
 def reponseVierge(motMystere):
     reponse = ""
@@ -109,9 +124,7 @@ def reponseVierge(motMystere):
         reponse+="_"
     return reponse
 
-etape = 0
-motMystere = "COUCOU" ## Mot à découvrir
-temp = reponseVierge(motMystere) ## Mot en cours de découverte
+
 
 ## Cette fonction renvoi l'index des occurences de la lettre donnée en argument
 def look_for_letter(motMystere, lettre_saisie):
@@ -129,21 +142,36 @@ def ajouteLettre(temp,motMystere,lettre_saisie):
 def testLettre(motMystere,lettre_saisie):
     return lettre_saisie in motMystere
 
-while (1):
-    print("On joue avec un mot de {} lettre : {}".format(len(temp),temp))
-    if (etape==12):
-        print("Vous avez perdu ...")
-        break
-    elif ("_" not in temp):
-        print("Vous avez gagné le mot mystère était {}!".format(temp))
-        break
-    lettre_saisie = saisie()
-    if testLettre(motMystere,lettre_saisie):
-        temp = ajouteLettre(temp,motMystere,lettre_saisie)
-    else:
-        traitPendu(etape) # Ajout d'un trait sur le pendu
-        etape += 1
+print("BIENVENUE AU JEU DU PENDU ! :)")
+
+## Dessin de la grille
+for i in range(NB_CASE+1):
+    pendu.penup()
+    pendu.setpos(-(NB_CASE*STEP/2), ((NB_CASE*STEP/2) - (STEP) * i)) # Start horizontal line
+    pendu.pendown()
+    pendu.setpos((NB_CASE*STEP/2), ((NB_CASE*STEP/2) - (STEP) * i)) # End horizontal line
+
+    pendu.penup()
+    pendu.setpos((-(NB_CASE*STEP/2) + (STEP) * i), (NB_CASE*STEP/2)) # Start vertical line
+    pendu.pendown()
+    pendu.setpos((-(NB_CASE*STEP/2) + (STEP) * i), -(NB_CASE*STEP/2)) # End vertical line
+
+restart = True
+while (restart):
+    etape = 0
+    motMystere = "COUCOU" ## Mot à découvrir
+    temp = reponseVierge(motMystere) ## Mot en cours de découverte
+    while not(testFin(etape,motMystere,temp)):
+        print("On joue avec un mot de {} lettre : {}".format(len(temp),temp))
+        lettre_saisie = saisie()
+        if testLettre(motMystere,lettre_saisie):
+            temp = ajouteLettre(temp,motMystere,lettre_saisie)
+        else:
+            traitPendu(etape) # Ajout d'un trait sur le pendu
+            etape += 1
+    restart = recommencer()
+
 
 turtle.update()
-print("Cliquer sur l'image pour quitter")
+print("Fin du jeu : Cliquer sur l'image pour quitter")
 turtle.exitonclick()
