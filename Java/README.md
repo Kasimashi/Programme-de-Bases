@@ -1,8 +1,12 @@
 # JAVA
 
-Supprimer les fichiers compilés : 
-rm -r *.class
+Compiler un fichier java : `javac <MonProgramme>.java`
 
+Supprimer les fichiers compilés : 
+`rm -r *.class`
+
+Executer mon programme Java :
+`java <MonProgramme>`
 La programmation orientée objet dispose de nombreuses fonctionnalités spécifiques à sa nature. Parmi celles-ci, les trois principales sont :
 l'encapsulation : c'est la possibilité de restreindre l'accès à certains éléments de l'objet. Java dispose des modificateurs private, protected et public pour ses attributs et méthodes ;
 le polymorphisme : c'est la possibilité pour un objet de prendre plusieurs identités. En Java, un objet peut être appelé sous le nom d'un autre objet pour en prendre les méthodes ;
