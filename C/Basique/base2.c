@@ -11,6 +11,7 @@ int main(int argc, char *argv[])
 {
 
 	int argent = 2;
+	unsigned char autorisation = 0;
     const int NOMBRE_CONSTANT = 5; //Déclaration d'une constante cette valeure est fixe et ne peut être modifié.
     printf("Valeur de la constance avant : %d\n", NOMBRE_CONSTANT);
     int int32_a = 3; //Déclaration d'un nombre sur 32 bits
@@ -70,7 +71,7 @@ int main(int argc, char *argv[])
 	    compteur++;
 	}
 
-	int compteur = 0;
+	compteur = 0;
 
 	do
 	{

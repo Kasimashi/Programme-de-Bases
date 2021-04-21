@@ -9,9 +9,8 @@ CC=gcc
 CFLAGS=-W -Wall -ansi -pedantic
 # Wall enables all compiler's warning messages
 LDFLAGS= -lpthread
-EXEC=main
 
-all: $(EXEC)
+all: base1 base2
 
 base1: base1.c
 	$(CC) -o $@ $^ $(LDFLAGS)
