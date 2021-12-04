@@ -71,6 +71,8 @@ int main(int argc, char **argv) {
 		err_n_die("inet_pton error for %s", argv[1]);
 	}
 	/* Connect to the server */
+	/* Cette fonction connecte votre socket à l'adresse spécifiée dans la structure sockaddr.
+Il s'agit donc d'une fonction à utiliser dans un client.*/
 	if (connect(sockfd,(struct sockaddr *) &servaddr, sizeof(servaddr))< 0){
 		err_n_die("Connect Failed!");
 	}

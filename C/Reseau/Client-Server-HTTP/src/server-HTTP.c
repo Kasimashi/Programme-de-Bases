@@ -60,13 +60,16 @@ int main(int argc, char **argv) {
 	/* htons : host to network short : convert SERVER_PORT to little endian or big endian standard bytes order */
 	servaddr.sin_port = htons(SERVER_PORT);
 
+	/* Bind lie un socket avec une structure sockaddr. */
 	if((bind(listenfd, (struct sockaddr *) &servaddr, sizeof(servaddr)))< 0){
 		err_n_die("Bind error");
 	}
+	/* Cette fonction définit la taille de la file de connexions en attente pour votre socket s. */
 	if ((listen(listenfd,10))<0){
 		err_n_die("Listen Failed!");
 	}
 
+	/* Boucle infini */
 	for (;;)
 	{
 		struct sockaddr_in addr;
