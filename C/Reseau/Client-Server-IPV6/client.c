@@ -5,7 +5,7 @@
 #include <sys/socket.h>
 #include <unistd.h>
  
-#define SERVER_PORT 443
+#define SERVER_PORT 7002
  
 int main(int argc, char *argv[])
 {
