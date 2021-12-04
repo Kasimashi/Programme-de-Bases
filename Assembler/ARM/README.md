@@ -1,3 +1,13 @@
+
+Pour compiler en cross compilation pour Arm il faut une cross compilation toolchain, ou compilateur croisé :
+Sous Linux il faut le paquet : `gcc-arm-none-eabi` qui peut s'installer avec :
+
+```
+sudo apt-get install gcc-arm-none-eabi
+```
+
+
+
 Les registres :
 Les registres principaux : r0 à r12
 r13 : sp : Stack Pointeur pointeur de pile

@@ -2,6 +2,14 @@
 
 import turtle
 import os
+import pygame
+
+try:
+    pygame.mixer.init()
+    pygame.mixer.music.load("audio.mp3")
+    pygame.mixer.music.play()
+except:
+    print("Pas de son ...")
 
 turtle.tracer(1)  # Turns off screen updates
 
