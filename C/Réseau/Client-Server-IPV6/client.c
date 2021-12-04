@@ -5,7 +5,7 @@
 #include <sys/socket.h>
 #include <unistd.h>
  
-#define SERVER_PORT 7002
+#define SERVER_PORT 443
  
 int main(int argc, char *argv[])
 {
@@ -13,6 +13,8 @@ int main(int argc, char *argv[])
 	struct sockaddr_in6 server_addr;
 	int ret;
 	char ch = 'a';
+
+	char* server_ip = "::1"; // Localhost
  
 	/* Arguments could be used in getaddrinfo() to get e.g. IP of server */
 	(void)argc;
@@ -27,7 +29,7 @@ int main(int argc, char *argv[])
  
 	/* Connect to server running on localhost */
 	server_addr.sin6_family = AF_INET6;
-	inet_pton(AF_INET6, "fe80::ea6c:d744:7b12:41bb", &server_addr.sin6_addr);
+	inet_pton(AF_INET6, server_ip, &server_addr.sin6_addr);
 	server_addr.sin6_port = htons(SERVER_PORT);
  
 	/* Try to do TCP handshake with server */
