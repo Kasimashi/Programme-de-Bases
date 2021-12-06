@@ -1,4 +1,4 @@
-// A simple C program for traversal of a linked list
+/* A simple C program for traversal of a linked list */
 #include <stdio.h>
 #include <stdlib.h>
  
