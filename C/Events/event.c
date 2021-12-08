@@ -14,7 +14,7 @@ typedef enum
    EVENT_4,
    EVENT_5,
    EVENT_LAST,
-} SYSLOG_EVENT;
+} EVENT;
 
 typedef struct security_record
 {
@@ -22,8 +22,12 @@ typedef struct security_record
 } security_record_t;
 
 
-static void voSaveEvent ( security_record_t *pRecord, SYSLOG_EVENT eSyslogEvent )
+static void voSaveEvent ( security_record_t *pRecord, EVENT eSyslogEvent )
 {
+	if (eSyslogEvent >= EVENT_LAST){
+		printf("[Warning] eSyslogEvent given in %s is too high\n",__FUNCTION__);
+		return;
+	}
 	SET_BIT(pRecord->ui32event,eSyslogEvent);
 }
 
@@ -59,6 +63,7 @@ int main(int argc, char **argv)
 	voSaveEvent(pRecord,EVENT_5);
 	voSaveEvent(pRecord,EVENT_1);
 	voSaveEvent(pRecord,EVENT_3);
+	voSaveEvent(pRecord,6);
 
 	processEvent(pRecord);
 

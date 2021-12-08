@@ -1,4 +1,5 @@
 all:
-	gcc example_1.c -o example_1
-	gcc example_2.c -o example_2
+	gcc basic.c -o basic
+	gcc single_list.c -o single_list
+	gcc single_list_circular.c -o single_list_circular
 	
