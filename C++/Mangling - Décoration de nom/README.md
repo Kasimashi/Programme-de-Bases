@@ -1,9 +1,9 @@
-#Attention au Mangling - Décoration de nom en C++
+# Attention au Mangling - Décoration de nom en C++
 
 ## Sans le extern C :
 
 Si on essai de compiler on obtient le message d'erreur suivant :
-````
+```
 gcc -c lib.c
 g++ -c main.cpp
 g++ main.o lib.o
