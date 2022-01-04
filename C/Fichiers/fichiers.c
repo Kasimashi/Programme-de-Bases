@@ -79,10 +79,27 @@ void LectureElementParElement(FILE *fichier)
 	fscanf(fichier,"%s %s %s", mot1, mot2, mot3);
 	printf("mot1: %s mot2:%s mot3:%s\n",mot1, mot2, mot3);
 }
+
+void EcritureCaractere(char ch,FILE *fichier)
+{
+	fputc(ch, fichier); // Écriture du caractère A
+}
+
+void EcritureLigne(char* txt,FILE *fichier)
+{
+	fputs(txt, fichier); // Ecriture de la chaine
+}
+
+void EcritureLigneArgument(char* txt,int arg1,FILE *fichier)
+{
+	fprintf(fichier, txt , arg1);
+}
+
 int main(int argc, char **argv)
 {
 
 	FILE *fichier = fopen("Coucou.data","r");//File est une structure
+	int age=25;
 	
 	if (fichier == NULL)//Si le fichier n'existe pas alors quitter le programme
 	{
@@ -104,5 +121,24 @@ int main(int argc, char **argv)
 	printf("Position du curseur à la fin de la lecture : %d\n",ftell(fichier));
 
 	fclose(fichier);
+
+	fichier = fopen("test.txt", "w");
+ 
+	if (fichier != NULL)
+	{
+
+		char* txt = "Salut les développeurs\nSeconde ligne !";
+		EcritureLigne(txt,fichier);
+
+		char ch = 'A';
+		EcritureCaractere(ch,fichier);
+		EcritureCaractere('\n',fichier);
+
+		char* txt2 = "Le Monsieur qui utilise le programme, il a %d ans";
+		EcritureLigneArgument(txt2, age, fichier);
+
+		fclose(fichier);
+	}
+ 
 	return 0;
 }
