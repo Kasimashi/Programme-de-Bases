@@ -36,7 +36,8 @@ void deleteTail(s_list *list);
 void bubbleSortList(s_list *list);
 void deleteList(s_list *list);
 void printList(s_list *list);
-void listLength(s_list *list, int *size);
+int findElement(s_list *list, int element);
+int listLength(s_list *list);
 
 /*Les fonctions qui vont manipuler la liste chaînée. En effet, on ne va pas modifier « à la main » le contenu des structures à chaque fois qu'on en a besoin ! Il est plus sage et plus propre de passer par des fonctions qui automatisent le travail. Encore faut-il les créer.
 
@@ -76,8 +77,7 @@ int main(int argc, char **argv)
 
     printList(myList);
 
-    listLength(myList, &sizeList);
-    printf("Size of the list : %d elements\n",sizeList);
+    printf("Size of the list : %d elements\n",listLength(myList));
 
     deleteHead(myList);
 
@@ -97,6 +97,17 @@ int main(int argc, char **argv)
    /* print list after sorting */
    printf("Linked list after sorting ");
    printList(myList);
+
+   int element = 6;
+   int index = -1;
+   index = findElement(myList,element);
+   if ( index != -1){
+	   printf("Element %d find at index %d (Start from 0)\n", element, index);
+   }
+   else
+   {
+	   printf("Element %d not found in the list\n", element);
+   }
 
 
    deleteList(myList);
@@ -358,17 +369,66 @@ void printList(s_list *list)
     printf("NULL\n");
 }
 
+/**
+ * @fn int findElement(s_list*, int)
+ * @brief Cherche par dichotomie un élément dans la liste et renvoi l'index de l'élément : renvoi l'index ou -1 si non trouvé.
+ *
+ * @param list
+ * @param element
+ */
+int findElement(s_list *list, int element)
+{
+	int i=0;
+	s_elem *current = list->first;
+	int a = 0;
+	//Except NULL
+	int b = listLength(list) - 1;
+	int m = 0;
+
+	while (a<=b)
+	{
+		m = (a+b)/2;
+
+		/* Parcours de la liste par pointeur : la dichotomie n'est pas adapté au liste chainée mais c'est pour exemple : on pourrait simplement parcourir la liste à la recherche de l'élément */
+		do{
+			current = current->next;
+			i++;
+		}while(i<m);
+		/* Remise à 0 du compteur */
+		i=0;
+
+
+		printf("Number %d at index %d\n",current->number,m);
+		if (current->number == element){
+			return m;
+		}
+		else if (current->number < element){
+			a = m + 1;
+		}
+		else{
+			b = m - 1;
+		}
+
+		/* Retour au premier élément */
+		current = list->first;
+
+	}
+	/* Not found */
+	return -1;
+}
 /*
  * Calcul la taille de la liste
 */
-void listLength(s_list *list, int *size)
+int listLength(s_list *list)
 {
   s_elem* current = list->first;
-  *size = 0;
+  int size = 0;
 
   while (current != NULL)
   {
-    ++*size;
+    ++size;
     current = current->next;
   }
+
+  return size;
 }
