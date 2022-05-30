@@ -13,7 +13,9 @@ typedef enum
    EVENT_3,
    EVENT_4,
    EVENT_5,
+
    EVENT_LAST,
+   EVENT_MAX = 32
 } EVENT;
 
 typedef struct security_record
