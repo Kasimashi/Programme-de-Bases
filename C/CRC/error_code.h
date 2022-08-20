@@ -1,0 +1,12 @@
+#ifndef _ERROR_CODE_H_
+#define _ERROR_CODE_H_
+
+
+enum CRC_ERROR{
+    CRC_ERROR_NONE,
+    CRC_ERROR_UNDEFINED,
+    CRC_ERROR_UNKNOWN_TYPE
+};
+
+
+#endif //_ERROR_CODE_H_
