@@ -1,16 +1,16 @@
 #include <stdio.h>
- 
-#define BIG_ENDIAN 0
-#define LITTLE_ENDIAN 1
- 
-int TestByteOrder() {
-        short int word = 0x0001;
-        char *b = (char *)&word;
-        return (b[0] ? LITTLE_ENDIAN : BIG_ENDIAN);
-}
- 
+/* Can also be <netinet/in.h>  */
+#include <arpa/inet.h> 
+
+#define IS_BIG_ENDIAN (!*(unsigned char *)&(uint16_t){1})
+
 int main() {
-        int r = TestByteOrder();
-        printf("%s\n", r == LITTLE_ENDIAN ? "Little Endian" : "Big Endian");
-        return r;
+    long x = 0xC0A80101;
+    printf("Basic value :\n0x%x\n", x);
+    x = htonl(x);
+    printf("After htonl()\n");
+    printf("0x%x\n", x);
+    x = ntohl(x);
+    printf("After ntohl()\n");
+    printf("0x%x\n", x);
 }
