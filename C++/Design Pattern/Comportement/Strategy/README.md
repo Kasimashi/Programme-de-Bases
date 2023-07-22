@@ -1,4 +1,7 @@
-# Hello
+# Strategy
+
+Stratégie est un patron de conception comportemental qui permet de définir une famille d’algorithmes, de les mettre dans des classes séparées et de rendre leurs objets interchangeables.
+
 
 ```mermaid
 classDiagram
@@ -9,7 +12,7 @@ classDiagram
     Client ..> StrategyA
     Client ..> StrategyB
     Client ..> StrategyC
-    IStrategy --o Context
+    Strategy --o Context
 
     class Context{
         -strategy
@@ -17,12 +20,12 @@ classDiagram
         +doSomething()
     }
 
-    class IStrategy{
+    class Strategy{
         +execute()
     }
-    IStrategy <|-- StrategyA
-    IStrategy <|-- StrategyB
-    IStrategy <|-- StrategyC
+    Strategy <|-- StrategyA
+    Strategy <|-- StrategyB
+    Strategy <|-- StrategyC
     class StrategyA{
       +execute()
     }
