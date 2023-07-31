@@ -4,7 +4,7 @@ Exemple de la machine à café :
 Une machine à café qui pourrait permettre de rajouter dans le café du sucre, du lait ou de la chantilly.
 L'ajout de tout ces ingrédients fait monter le prix.
 Le programme permet de fermer à la modification et d'ouvrir à l'extension.
-En rajoutant des "Décorateurs" qui doivent hériter de CoffeeDecorator.
+En rajoutant des "Décorateurs" qui doivent hériter de DecoratorBoisson.
 
 
 ```mermaid
@@ -21,17 +21,24 @@ classDiagram
         +prix()
         +description()
     }
+    
+    class Expresso{
+        -price
+        +prix()
+        +description()
+    }
 
+    Boisson <|-- Expresso
     Boisson <|-- Coffee
-    Boisson <|-- CoffeeDecorator
-    CoffeeDecorator <|-- Sucre
-    CoffeeDecorator <|-- Lait
-    CoffeeDecorator <|-- Chantilly
-    CoffeeDecorator *-- Boisson
+    Boisson <|-- DecoratorBoisson
+    DecoratorBoisson <|-- Sucre
+    DecoratorBoisson <|-- Lait
+    DecoratorBoisson <|-- Chantilly
+    DecoratorBoisson *-- Boisson
 
-    class CoffeeDecorator{
+    class DecoratorBoisson{
         # Boisson* component_
-        +DecoratorCoffee(Boisson* component) : component_(component)
+        +DecoratorBoisson(Boisson* component) : component_(component)
         +prix()
         +Description()
     }
