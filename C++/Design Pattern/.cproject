@@ -41,7 +41,7 @@
 						</toolChain>
 					</folderInfo>
 					<sourceEntries>
-						<entry excluding="Creation/Singleton/Singleton.cpp|Creation/Builder/Builder.cpp|Comportement/Strategy/Strategy.cpp" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
+						<entry excluding="Structure/Décorateur/Decorator.cpp|Comportement/Observer/Observer.cpp|Creation/Singleton/Singleton.cpp|Creation/Builder/Builder.cpp|Comportement/Strategy/Strategy.cpp" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
 					</sourceEntries>
 				</configuration>
 			</storageModule>
@@ -87,7 +87,7 @@
 						</toolChain>
 					</folderInfo>
 					<sourceEntries>
-						<entry excluding="Creation/Singleton/Singleton.cpp|Creation/Builder/Builder.cpp|Comportement/Strategy/Strategy.cpp" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
+						<entry excluding="Structure/Décorateur/Decorator.cpp|Comportement/Observer/Observer.cpp|Creation/Singleton/Singleton.cpp|Creation/Builder/Builder.cpp|Comportement/Strategy/Strategy.cpp" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
 					</sourceEntries>
 				</configuration>
 			</storageModule>
