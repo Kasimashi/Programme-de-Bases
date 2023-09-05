@@ -92,17 +92,36 @@ int main() {
 	Boisson* Cafe = new Coffee;
 	std::cout << Cafe->Description() << "\n";
 
-	Boisson* CafeDecore = new Chantilly(new Lait(new Sucre(Cafe)));
+
+	DecoratorBoisson *sucre1 = new Sucre(Cafe);
+	DecoratorBoisson *lait1 = new Lait(sucre1);
+	DecoratorBoisson *chantilly1 = new Chantilly(lait1);
+
+	Boisson* CafeDecore = chantilly1;
+
 	std::cout  << CafeDecore->Description() << "\n";
 	std::cout  << "Le prix total de mon café est de : " << CafeDecore->prix() << "€ \n";
 
 	delete Cafe;
-	delete CafeDecore;
+	delete chantilly1;
+	delete lait1;
+	delete sucre1;
 
-	Boisson* expresso = new Chantilly(new Lait(new Sucre(new Expresso)));
-	std::cout  << "Le prix total de mon expresso est de : " << expresso->prix() << "€ \n";
+
+	Boisson* expresso = new Expresso();
+
+	DecoratorBoisson *sucre2 = new Sucre(expresso);
+	DecoratorBoisson *lait2 = new Lait(sucre2);
+	DecoratorBoisson *chantilly2 = new Chantilly(lait2);
+
+	Boisson* expressoDecore = chantilly2;
+
+	std::cout  << "Le prix total de mon expresso est de : " << expressoDecore->prix() << "€ \n";
 
 	delete expresso;
+	delete chantilly2;
+	delete lait2;
+	delete sucre2;
 
   return 0;
 }
