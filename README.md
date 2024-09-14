@@ -11,18 +11,18 @@ Il existe un grand nombre de language de programation on se s'interessera ici qu
 
 ### Framework
 
-- Angular JS
+- Angular JS : Basé sur TypeScript
 
 - Vue JS
 
 - Meteor JS
 
-- Node JS : Initiateur de `npm`
+- Node JS :
+Il fonctionne comme un environnement d'exécution Javascript
+Initiateur de `npm` (Node Packet Manager).
 
 npm is installed with Node.js
-
 This means that you have to install Node.js to get npm installed on your computer.
-
 Download Node.js from the official Node.js web site: https://nodejs.org
 
 - Ember JS
