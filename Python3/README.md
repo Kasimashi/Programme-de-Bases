@@ -2,6 +2,35 @@
 
 ## Mots clés
 
+### Classes
+
+- `__str__` se concentre sur la lisibilité, sa sortie peut donc sacrifier certains détails pour plus de clarté.
+- `__repr__` privilégie l'absence d'ambiguïté, en fournissant une représentation détaillée de l'état de l'objet, incluant souvent toutes les informations pertinentes pour la reconstruction de l'objet.
+
+
+```python
+classe  Point : 
+    def  __init__ ( self, x, y ): 
+        self.x = x 
+        self.y = y 
+
+    def  __str__ ( self ): 
+        return  f"Point( {self.x} , {self.y} )" 
+
+    def  __repr__ ( self ): 
+        return  f"Point(x= {self.x} , y= {self.y} )" 
+
+# Utilisation
+ point = Point( 3 , 4 ) 
+print ( str (point))    # Sortie : Point(3, 4) 
+print ( repr (point))   # Sortie : Point(x=3, y=4)
+```
+
+- Le __dict__ en Python représente un dictionnaire ou tout objet de mappage utilisé pour stocker les attributs de l'objet. Ils sont également connus sous le nom d'objets mappingproxy . Pour faire simple, chaque objet en Python possède un attribut désigné par __dict__. Pour récupérer les attributs __dict__ d'un objet, nous utilisons la fonction intégrée vars() de Python.
+
+- 
+### Fonctions
+
 -`lambda arguments : expression`
 
 En Python, le mot-clé lambda est utilisé pour définir des fonctions anonymes, également appelées fonctions lambda.
