@@ -53,6 +53,7 @@ La classe mère est une généréalisation des classes filles.
 
 ![image](https://github.com/user-attachments/assets/b108579a-9d01-4f2f-b9f8-bbafad4a3f02)
 
+Ici l'association se lit : Une personne possède de 0 à plusieurs smartphone, un smartphone a un seul propriétaire
 
 ## Références
 
