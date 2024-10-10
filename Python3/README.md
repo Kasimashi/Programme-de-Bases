@@ -1,5 +1,45 @@
 # Python
 
+## Module Python
+
+Correspond à un seul fichier qui contient de nombreuses fonctions / classes
+S'importe avec le mot clé `import` ex : "import random"
+
+## Package Python
+
+Ref : https://docs.python.org/3/tutorial/modules.html#packages
+
+Est un dossier qui contient un ensemble de modules python
+Pour spécifier qu'il s'agit d'un package il faut créer un fichier à la source du package nommé `__init__.py`.
+Ce fichier peut être vide.
+
+```
+sound/                          Top-level package
+      __init__.py               Initialize the sound package
+      formats/                  Subpackage for file format conversions
+              __init__.py
+              wavread.py
+              wavwrite.py
+              aiffread.py
+              aiffwrite.py
+              auread.py
+              auwrite.py
+              ...
+      effects/                  Subpackage for sound effects
+              __init__.py
+              echo.py
+              surround.py
+              reverse.py
+              ...
+      filters/                  Subpackage for filters
+              __init__.py
+              equalizer.py
+              vocoder.py
+              karaoke.py
+              ...
+```
+
+
 ## Mots clés
 
 ### Classes
