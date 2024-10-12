@@ -1,0 +1,15 @@
+
+```plantuml
+@startuml
+class Student {
+    Name
+}
+Student "*0..*" - "1..*" Course
+(Student,Course) .. Enrollment
+
+class Enrollment {
+    drop()
+    cancel()
+}
+@enduml
+```
