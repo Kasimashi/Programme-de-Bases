@@ -51,4 +51,7 @@ class Banker(Person):
     
 Banquier = Banker("Luc",20,"United Kingdom")
 print(Banquier.name)
+print(Banquier)
+Personne = Person(name="Serge",old=30, country="France")
+print(Personne)
     
