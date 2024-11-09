@@ -25,7 +25,21 @@ int main(void)
 		perror("socket()");
 		return EXIT_FAILURE;
 	}
+	
+	/* Socket only listen on IPv6 */
+	/*
+	flag = 1;
  
+    ret = setsockopt(listen_sock_fd,
+                   IPPROTO_IPV6,
+                   IPV6_V6ONLY,
+                   (const void *)&flag,
+                   sizeof flag);
+    if ( ret ) {
+       perror("setsockopt(2)");
+    }
+    */
+    
 	/* Set socket to reuse address */
 	flag = 1;
 	ret = setsockopt(listen_sock_fd, SOL_SOCKET, SO_REUSEADDR, &flag, sizeof(flag));
