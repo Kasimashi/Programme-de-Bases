@@ -23,6 +23,7 @@ L'auto-école ne peut présenter que 8 élèves maximum à chaques date d'examen
 Admin --> (Admin the application)
 @enduml
 ```
+
 ## Diagramme d'activité
 
 ```plantuml
