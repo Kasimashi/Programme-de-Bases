@@ -1,0 +1,20 @@
+{% macro function_card(func) %}
+<div class="function">
+    <h4>{{ func.name }}</h4>
+    <p>{{ func.description }}</p>
+
+    {% if func.params %}
+    <ul>
+        {% for p in func.params %}
+        <li><strong>{{ p.name }}</strong> ({{ p.type }})</li>
+        {% endfor %}
+    </ul>
+    {% else %}
+    <em>Aucun paramètre</em>
+    {% endif %}
+
+    {% if func.deprecated %}
+        <strong style="color:red;">⚠ Obsolète</strong>
+    {% endif %}
+</div>
+{% endmacro %}

@@ -1,0 +1,21 @@
+# 📘 Documentation de {{ project.name }}
+
+Version : {{ project.version }}
+Auteur : {{ project.author }}
+
+---
+
+## 📦 Modules
+
+{% for module in project.modules %}
+### 🔹 {{ module.name }}
+
+{{ module.description }}
+
+#### Fonctions
+{% for func in module.functions %}
+- **{{ func.name }}**({{ func.params | join(", ") }})
+  {{ func.description }}
+{% endfor %}
+
+{% endfor %}

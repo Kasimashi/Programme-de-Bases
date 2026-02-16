@@ -1,0 +1,25 @@
+# 🏠 {{ house.name }}
+
+- Type : {{ house.type }}
+- Surface : {{ house.surface }} m²
+- Étages : {{ house.floors }}
+- Garage : {{ "Oui" if house.garage else "Non" }}
+
+## 🧱 Matériaux
+{% for m in house.materials %}
+- {{ m }}
+{% endfor %}
+
+## 🛋 Pièces
+{% for r in house.rooms %}
+- {{ r.name }} ({{ r.area }} m², {{ r.windows }} fenêtres)
+{% endfor %}
+
+## ⚙️ Options
+{% if house.options %}
+{% for o in house.options %}
+- {{ o }}
+{% endfor %}
+{% else %}
+*Aucune option*
+{% endif %}

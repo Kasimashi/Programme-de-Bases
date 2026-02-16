@@ -1,0 +1,7 @@
+# 🏠 Sommaire des maisons
+
+| Nom | Type | Surface | Étages | Garage | Nb pièces |
+|-----|------|---------|--------|--------|--------|
+{% for h in houses %}
+| {{ h.name }} | {{ h.type }} | {{ h.surface }} | {{ h.floors }} | {{ "Oui" if h.garage else "Non" }} | {{ h.rooms|length }} |
+{% endfor %}

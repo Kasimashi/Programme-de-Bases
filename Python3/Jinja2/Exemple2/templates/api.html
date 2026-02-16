@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% from "macros.html" import function_card %}
+
+{% block content %}
+
+{% set total_functions = 0 %}
+
+{% for module in modules %}
+<section id="{{ module.name }}">
+    <h2>{{ module.name | capitalize }}</h2>
+    <p>{{ module.description | default("Pas de description") }}</p>
+
+    {% if module.functions is defined and module.functions %}
+        {% set total_functions = total_functions + module.functions|length %}
+
+        {% for func in module.functions %}
+            {{ function_card(func) }}
+        {% endfor %}
+    {% else %}
+        <p><em>Aucune fonction</em></p>
+    {% endif %}
+</section>
+{% endfor %}
+
+<hr>
+<p><strong>Total fonctions :</strong> {{ total_functions }}</p>
+
+{% endblock %}
